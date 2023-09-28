@@ -32,36 +32,26 @@ new_data = pd.concat([enc_data, monthData], axis=1)
 new_data.head()
 
 columns_to_keep = list(new_data.columns)
-# columns_to_keep.remove("APMC")
 columns_to_keep.remove("Commodity")
-# columns_to_keep.remove("Month")
 
 new_data = new_data[columns_to_keep]
 
 train_len = int(new_data.shape[0] * 0.8)
 
-# Shuffling dataset
 new_data = new_data.sample(frac=1)
-# train = new_data.iloc[:train_len, :]
 test = new_data.iloc[train_len:, :]
 
-# print("Train set shape:", train.shape)
 print("Test set shape:", test.shape)
 
-# train = train.to_numpy()
 test = test.to_numpy()
 
 scaler = load(args.scaler)
-# train = scaler.fit_transform(train)
 test = scaler.transform(test)
 
-# X_train, y_train = train[:, :-1], train[:, -1]
 X_test, y_test = test[:, :-1], test[:, -1]
 
-
+# Just predicting the test case
 model = load(args.model)
-# model.fit(X_train, y_train)
-
 y_pred = model.predict(X_test)
 
 print("RMSE Score of the Linear Regression Model: ", mean_squared_error(y_test, y_pred))
