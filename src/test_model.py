@@ -47,11 +47,11 @@ test = new_data.iloc[train_len:, :]
 # print("Train set shape:", train.shape)
 print("Test set shape:", test.shape)
 
-train = train.to_numpy()
+# train = train.to_numpy()
 test = test.to_numpy()
 
 scaler = load(args.scaler)
-train = scaler.fit_transform(train)
+# train = scaler.fit_transform(train)
 test = scaler.transform(test)
 
 # X_train, y_train = train[:, :-1], train[:, -1]
