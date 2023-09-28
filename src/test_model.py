@@ -24,7 +24,8 @@ monthData = pd.read_csv(file)
 monthData = monthData[columns] # Selecting the required columns
 
 # Encoding the columns
-enc = load(args.encoder)
+with open(args.encoder, "rb") as f:
+    enc = load(f)
 enc_data = pd.DataFrame(enc.fit_transform(monthData[["Commodity"]]).toarray())
 
 new_data = pd.concat([enc_data, monthData], axis=1)

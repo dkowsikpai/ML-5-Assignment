@@ -10,5 +10,5 @@ python src/train_model.py --data ./data/Monthly_data_cmo.csv
 - Testing of the model can be done using `src/src/test_model.py`
 To run use the following code
 ```
-python src/test_model.py --data ./data/Monthly_data_cmo.csv --model ./data/model.bin --scaler ./data/std_scaler.bin 
+python src/test_model.py --data ./data/Monthly_data_cmo.csv --model ./data/model.bin --scaler ./data/std_scaler.bin --encoder ./data/encoder.bin
 ```
